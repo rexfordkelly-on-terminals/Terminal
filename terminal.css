@@ -1,0 +1,26 @@
+html {
+	background: #111;
+	font-size: 10pt;
+}
+
+.container {
+	margin: 1em;
+}
+
+.terminal,
+.terminal-input,
+.terminal-input-prefix {
+	color: #fff;
+	font-family: "Monaco", "Courier New", "Courier";
+	line-height: 1.6em;
+}
+
+.terminal {
+	white-space: pre;
+}
+
+.terminal-input {
+	background: none;
+	border: 0;
+	outline: none;
+}

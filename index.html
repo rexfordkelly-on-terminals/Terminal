@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Terminal Simulator Prototype</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="yui.cssreset-min.3.16.0-rc-1.css"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="terminal.css"/>
+	</head>
+	<body>
+		<div class="container">
+			<code id="terminal" class="terminal"></code>
+			<form action="#" method="post" autocomplete="off">
+				<span id="terminal-input-prefix" class="terminal-input-prefix"></span>
+				<input type="text" id="terminal-input" class="terminal-input" autocomplete="off"/>
+			</form>
+		</div>
+		<!-- history -->
+		<script type="text/javascript" src="history.js"></script>
+		<!-- keyboard handler -->
+		<script type="text/javascript" src="keyboard.js"></script>
+		<!-- terminal commands -->
+		<script type="text/javascript" src="command.js"></script>
+		<script type="text/javascript" src="command/clear.js"></script>
+		<script type="text/javascript" src="command/hello.js"></script>
+		<script type="text/javascript" src="command/help.js"></script>
+		<!-- terminal + init -->
+		<script type="text/javascript" src="terminal.js"></script>
+		<script type="text/javascript" src="init.js"></script>
+	</body>
+</html>
