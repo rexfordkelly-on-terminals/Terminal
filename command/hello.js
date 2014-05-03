@@ -7,7 +7,8 @@ Command_Hello.prototype = new Command;
 Command_Hello.prototype.name = false;
 
 Command_Hello.prototype.test = function(v) {
-	return /^(hello|hi|bonjour)[^a-z]*/i.test(v);
+	v = v.split();
+	return /^(hello|hi|bonjour)$/i.test(v[0]);
 };
 
 Command_Hello.prototype.invoke = function(v) {

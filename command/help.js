@@ -8,7 +8,8 @@ Command_Help.prototype.name = 'help';
 Command_Help.prototype.help = 'Displays helpful information';
 
 Command_Help.prototype.test = function(v) {
-	return /^help\s?/.test(v);
+	v = v.split();
+	return /^help$/.test(v[0]);
 };
 
 Command_Help.prototype.invoke = function(v) {

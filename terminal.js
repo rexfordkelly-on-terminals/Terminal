@@ -136,6 +136,7 @@ Terminal.prototype.init = function() {
 	this.registerCommand(new Command_Clear(this));
 	this.registerCommand(new Command_Hello(this));
 	this.registerCommand(new Command_Help(this));
+	this.registerCommand(new Command_History(this));
 
 	this.nl('Welcome to HOST'.replace('HOST', this.host));
 };
