@@ -13,6 +13,13 @@ var Terminal = function(el, opt) {
 	var captureInput = this.captureInput.bind(this);
 	this.keyboard.keyBind('keypress', 13, captureInput);
 
+	// set up default commands
+	this.command = new Command(this);
+	this.commands = {};
+	new Command_Clear(this);
+	new Command_Help(this);
+	new Command_History(this);
+
 	this.setPrefix('');
 };
 
@@ -30,7 +37,7 @@ Terminal.prototype.createForm = function(prefix) {
 
 	var form = document.createElement('form');
 	form.action = '#';
-	form.autocomplete = false;
+	form.autocomplete = 'off';
 	form.className = formId;
 	form.id = formId;
 	form.method = 'post';
@@ -41,7 +48,7 @@ Terminal.prototype.createForm = function(prefix) {
 	label.id = labelId;
 
 	var input = document.createElement('input');
-	input.autocomplete = false;
+	input.autocomplete = 'off';
 	input.className = inputId;
 	input.id = inputId;
 
@@ -54,10 +61,38 @@ Terminal.prototype.createForm = function(prefix) {
 // capture input from keyboard
 Terminal.prototype.captureInput = function(e) {
 	e.preventDefault();
+
 	var v = this.input.value;
 	this.input.value = '';
 	v = this.trim(v);
 	this.nl(this.cleanHtml(v));
+
+	// special event for history - could use event-observer
+	if (this.commands.history) {
+		this.commands.history.push(v);
+	}
+
+	if (v.length) {
+		this.test(v);
+	}
+};
+
+/*
+@commands
+*/
+
+Terminal.prototype.register = function(alias, handler) {
+	this.commands[alias] = handler;
+};
+
+Terminal.prototype.test = function(v) {
+	v = this.command.parse(v);
+	if (this.commands[v[0]]) {
+		this.commands[v[0]].invoke(v[1]);
+	}
+	else {
+		this.nl('Unrecognised command "' + v[0] + '"');
+	}
 };
 
 /*

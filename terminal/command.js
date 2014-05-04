@@ -1,21 +1,17 @@
 var Command = function(term) {
 	this.term = term;
+	this.name = 'abstract';
+	this.help = 'n/a';
 };
 
 Command.prototype = {};
 
-Command.prototype.name = 'unknown';
-Command.prototype.help = 'No help information for unknown';
-
-Command.prototype.test = function(v) {
-	return false;
+Command.prototype.parse = function(v) {
+	// overly simplistic but ok for prototype
+	v = v.split(/\s+/);
+	return [v.shift(), v];
 };
 
 Command.prototype.invoke = function(v) {
 	return;
-};
-
-// referenced by Command_Man
-Command.prototype.man = function() {
-	this.term.out("\nNo man page for " + this.name);
 };

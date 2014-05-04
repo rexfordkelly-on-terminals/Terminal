@@ -16,7 +16,7 @@ html {
 }
 
 .terminal {
-	white-space: pre;
+	white-space: pre-wrap;
 }
 
 .terminal-input {

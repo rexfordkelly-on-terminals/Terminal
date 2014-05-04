@@ -1,38 +1,29 @@
 var Command_Help = function(term) {
 	this.term = term;
+	this.name = 'help';
+	this.help = 'Displays helpful information';
+	term.register(this.name, this);
 };
 
 Command_Help.prototype = new Command;
 
-Command_Help.prototype.name = 'help';
-Command_Help.prototype.help = 'Displays helpful information';
-
-Command_Help.prototype.test = function(v) {
-	v = v.split();
-	return /^help$/.test(v[0]);
-};
-
-Command_Help.prototype.invoke = function(v) {
-	if (v.length == 4) {
-		this.displayAll();
+Command_Help.prototype.invoke = function(args) {
+	if (args.length) {
+		this.man(args);
 	}
 	else {
-		this.displayMan(v);
+		this.all();
 	}
 };
 
-Command_Help.prototype.displayAll = function() {
+Command_Help.prototype.all = function() {
 	this.term.out("\nAll available commands:");
 	var c;
-	for (c = 0; c < this.term.commands.length; c++) {
-		var command = this.term.commands[c];
-		if (! command.name) {
-			continue;
-		}
-		this.term.out("\n\tCOMMAND\t\tHELP".replace('COMMAND', command.name).replace('HELP', command.help));
+	for (c in this.term.commands) {
+		this.term.out("\n\t" + c + "\t\t" + this.term.commands[c].help);
 	}
 };
 
-Command_Help.prototype.displayMan = function(v) {
-	this.term.out("\nSorry, this feature is still work in progress!");
+Command_Help.prototype.man = function(v) {
+	this.term.out("\nSorry, the \"man\" feature is still work in progress!");
 };

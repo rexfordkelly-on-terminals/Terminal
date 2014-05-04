@@ -1,16 +1,12 @@
 var Command_Clear = function(term) {
 	this.term = term;
+	this.name = 'clear';
+	this.help = 'Clear the screen';
+	term.register(this.name, this);
 };
 
 Command_Clear.prototype = new Command;
 
-Command_Clear.prototype.name = 'clear';
-Command_Clear.prototype.help = 'Clear the screen';
-
-Command_Clear.prototype.test = function(v) {
-	return /^clear$/.test(v);
-};
-
-Command_Clear.prototype.invoke = function(v) {
+Command_Clear.prototype.invoke = function(args) {
 	this.term.clear();
 };
