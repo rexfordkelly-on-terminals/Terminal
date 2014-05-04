@@ -9,7 +9,7 @@ html {
 
 .terminal,
 .terminal-input,
-.terminal-input-prefix {
+.terminal-input-label {
 	color: #fff;
 	font-family: "Monaco", "Courier New", "Courier";
 	line-height: 1.6em;
