@@ -91,7 +91,7 @@ Terminal.prototype.test = function(v) {
 		this.commands[v[0]].invoke(v[1]);
 	}
 	else {
-		this.nl('Unrecognised command "' + v[0] + '"');
+		this.out("\nUnrecognised command \"" + v[0] + "\"");
 	}
 };
 
